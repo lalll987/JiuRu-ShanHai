@@ -1,0 +1,12 @@
+Flask==2.2.3
+Flask-Cors==3.0.10
+dashscope==1.12.0
+redis==4.5.4
+pydantic==1.10.7
+werkzeug==2.2.3
+PyPDF2
+python-docx
+pydub
+SpeechRecognition
+python-dotenv
+aiofiles 

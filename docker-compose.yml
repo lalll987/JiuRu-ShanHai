@@ -1,0 +1,19 @@
+name: challenge-app
+
+services:
+  backend:
+    build:
+      context: .
+      no_cache: true
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+    restart: always
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    restart: always 

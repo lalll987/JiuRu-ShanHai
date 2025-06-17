@@ -1,0 +1,501 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    height: 90vh;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* 输出区域样式 */
+.output-area {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #f8f9fa;
+}
+
+.message {
+    display: flex;
+    margin: 10px 0;
+}
+
+.message.user {
+    justify-content: flex-end;
+}
+
+.message.assistant {
+    justify-content: flex-start;
+}
+
+.message .content {
+    max-width: 70%;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+.message.user .content {
+    background-color: #8B5CF6;
+    color: white;
+}
+
+.message.assistant .content {
+    background-color: #e9ecef;
+    color: #212529;
+}
+
+.divider {
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 0 20px;
+}
+
+/* 输入区域样式 */
+.input-area {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-container {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+textarea {
+    flex: 1;
+    height: 100px;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    resize: none;
+    font-size: 1em;
+    font-family: inherit;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #8B5CF6;
+}
+
+.send-button {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    background-color: #8B5CF6;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.send-button:hover {
+    background-color: #7C3AED;
+}
+
+.send-button svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* 系统消息样式 */
+.message.system {
+    justify-content: center;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.message.system .content {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 0.9em;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+/* 模式选择按钮样式 */
+.mode-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.mode-button {
+    padding: 8px 16px;
+    background-color: #8B5CF6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.mode-button:hover {
+    background-color: #7C3AED;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #8B5CF6;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #7C3AED;
+}
+
+/* 标题样式 */
+.title-header {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(to right, #8B5CF6, #7C3AED);
+    color: white;
+    border-radius: 10px 10px 0 0;
+}
+
+.title-main {
+    font-family: "LiSu", "STLiti", "SimLi", serif;
+    font-size: 2.8em;
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: 2px;
+}
+
+.title-sub {
+    font-family: "FangSong", "STFangsong", serif;
+    font-size: 1.2em;
+    margin: 10px 0 0;
+    font-weight: normal;
+    opacity: 0.9;
+}
+
+/* 文件上传区域样式 */
+.file-upload {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.file-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: #f8f9fa;
+    border: 2px dashed #8B5CF6;
+    border-radius: 8px;
+    color: #8B5CF6;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.file-label:hover {
+    background-color: #8B5CF6;
+    color: white;
+}
+
+.file-label svg {
+    width: 20px;
+    height: 20px;
+}
+
+.file-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.file-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 12px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.file-item button {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 2px;
+}
+
+.file-item button:hover {
+    color: #8B5CF6;
+}
+
+/* 加载动画 */
+.loading-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 错误消息样式 */
+.message.system.error {
+    background-color: #fff5f5;
+    border-left: 4px solid #e53e3e;
+}
+
+.message.system.error .content {
+    color: #c53030;
+}
+
+/* 禁用状态样式 */
+button:disabled,
+textarea:disabled,
+input:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* 文件上传区域样式优化 */
+.file-upload-area {
+    border: 2px dashed #e2e8f0;
+    padding: 20px;
+    text-align: center;
+    margin: 10px 0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.file-upload-area:hover {
+    border-color: #3498db;
+    background-color: #f8fafc;
+}
+
+.file-upload-area.dragover {
+    border-color: #3498db;
+    background-color: #ebf8ff;
+}
+
+/* 文件列表样式优化 */
+.file-list {
+    margin-top: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    background-color: #f8fafc;
+    border-radius: 4px;
+    margin-bottom: 4px;
+}
+
+.file-name {
+    flex: 1;
+    margin-right: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.file-size {
+    color: #718096;
+    margin-right: 10px;
+}
+
+.remove-file {
+    color: #e53e3e;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.remove-file:hover {
+    background-color: #fff5f5;
+}
+
+/* 输入区域样式优化 */
+.input-container {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border-top: 1px solid #e2e8f0;
+}
+
+textarea {
+    flex: 1;
+    min-height: 60px;
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    resize: none;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+    transition: all 0.3s ease;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.send-button {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.send-button:hover:not(:disabled) {
+    background-color: #2980b9;
+    transform: translateY(-1px);
+}
+
+.send-button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.send-button svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* 消息气泡样式优化 */
+.message {
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 12px;
+    max-width: 80%;
+    position: relative;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.message.left {
+    background-color: #f8fafc;
+    margin-right: auto;
+}
+
+.message.right {
+    background-color: #3498db;
+    color: white;
+    margin-left: auto;
+}
+
+.message.system {
+    background-color: #f1f5f9;
+    color: #475569;
+    margin: 10px auto;
+    text-align: center;
+    max-width: 90%;
+    font-style: italic;
+}
+
+/* 头像样式优化 */
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.avatar svg {
+    width: 20px;
+    height: 20px;
+}
+
+.avatar.professor {
+    background-color: #4299e1;
+    color: white;
+}
+
+.avatar.research {
+    background-color: #48bb78;
+    color: white;
+}
+
+.avatar.student {
+    background-color: #ed8936;
+    color: white;
+}
+
+/* 滚动条样式优化 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a0aec0;
+} 

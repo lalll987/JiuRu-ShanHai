@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九如-山海 - 社会科学研究创新平台</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="title-header">
+            <h1 class="title-main">九如-山海</h1>
+            <h2 class="title-sub">社会科学研究创新平台</h2>
+        </header>
+        
+        <!-- 输出区域 -->
+        <div class="output-area" id="outputArea">
+            <!-- 聊天内容将在这里动态添加 -->
+        </div>
+        
+        <!-- 分隔线 -->
+        <div class="divider"></div>
+
+        <!-- 输入区域 -->
+        <div class="input-area">
+            <div class="file-upload">
+                <input type="file" id="fileInput" multiple accept=".doc,.docx,.pdf,.mp4,.mp3">
+                <label for="fileInput" class="file-label">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M12 4v16m0-16l-4 4m4-4l4 4" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </svg>
+                    <span>上传文件</span>
+                </label>
+                <div id="fileList" class="file-list"></div>
+            </div>
+            
+            <div class="input-container">
+                <textarea placeholder="请输入您的研究想法或相关文献..."></textarea>
+                <button class="send-button">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
