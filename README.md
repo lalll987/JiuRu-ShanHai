@@ -1,6 +1,6 @@
-# PhD Thesis Writing Multi-Agent System
+# "JiuRu-ShanHai" - A Social Science Research Innovation Scheme Driven by Large Models
 
-This system simulates the PhD thesis writing process using multiple AI agents working together. The system includes five specialized agents and auxiliary modules to assist in the thesis writing process.
+The "JiuRu-ShanHai" project is dedicated to establishing a large model-driven social science innovative research platform, enabling closed-loop automated scientific research. The project focuses on the current transition in scientific research from human-driven to AI-assisted, ultimately achieving full automation. Through a multi-agent collaborative workflow driven by multimodal large models, the project realizes full automation of the entire research process, from inputting research topics to generating creativity, revising frameworks, collecting data, analyzing results, and writing papers
 
 ## System Components
 
